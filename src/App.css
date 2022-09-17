@@ -1,6 +1,25 @@
 .App {
   text-align: center;
+  display: inline;
 }
+
+#map {
+  height: 45rem;
+  width: 45rem;
+  /* overflow: hidden; */
+}
+
+.check {
+  position: fixed;
+  top: 5rem;
+  right: 0rem;
+  width: 300px;
+  border: 3px solid #73AD21;
+  background-color: aqua;
+  z-index: 1;
+}
+
+
 
 .App-logo {
   height: 40vmin;
