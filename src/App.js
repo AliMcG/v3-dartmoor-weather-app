@@ -10,8 +10,8 @@ import "./App.css";
 
 function App() {
   const position = { lat: 50.556, lng: -3.959884643554688 };
-  const [longitude, setLongitude] = useState(0);
-  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState("");
   const [weather, setWeather] = useState(false);
   const [weatherData, setWeatherData] = useState(null)
 
@@ -26,7 +26,7 @@ function App() {
   function LocationMarker() {
     const map = useMapEvents({
       click(e) {
-        // map.locate();
+        
         setLongitude(e.latlng.lng);
         setLatitude(e.latlng.lat);
         // setPosition(e.latlng)
@@ -35,19 +35,13 @@ function App() {
         console.log(`longitude: `, longitude);
         console.log(`latitude: `,latitude);
         setWeather(true);
-        getWeather()
-      },
-      // locationfound(e) {
-      //   setPosition(e.latlng);
-      //   map.flyTo(e.latlng, map.getZoom());
-      // },
+        if (longitude) {
+          getWeather()
+      }}
+     
     });
 
-    // return position === null ? null : (
-    //   <Marker position={position}>
-    //     <Popup>You are here</Popup>
-    //   </Marker>
-    // );
+    
   }
 
   return (
@@ -59,27 +53,19 @@ function App() {
         />
         {weather && (
           <Marker position={[latitude, longitude]}>
-            {/* <div className="check">
-              <p>Longitude: {longitude}</p>
-              <p>Latitude: {latitude}</p>
-            </div> */}
-            {/* onClick={getWeather} */}
-
-            
+                        
             <Popup>
               <p>Longitude: {longitude}</p>
               <p>Latitude: {latitude}</p>
-              <p>weather data: {weatherData?.main.temp}</p>
-              <p>Longitude: {longitude}</p>
-              <p>Latitude: {latitude}</p>
-              <p>weather data: {weatherData}</p>
+              <p>Current temperature: {weatherData?.main.temp}°C.</p>
+              <p>{weatherData?.weather[0].description}</p>
               
             </Popup>
           </Marker>
         )}
         <LocationMarker />
       </MapContainer>
-      ,
+      
     </div>
   );
 }
