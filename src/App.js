@@ -6,13 +6,12 @@ import {
   Marker,
 } from "react-leaflet";
 import { useState } from "react";
-import Modal from "@mui/material/Modal";
 import "./App.css";
 
 function App() {
   const position = { lat: 50.556, lng: -3.959884643554688 };
-  const [longitude, setLongitude] = useState(null);
-  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState(0);
   const [weather, setWeather] = useState(false);
   const [weatherData, setWeatherData] = useState(null)
 
@@ -20,7 +19,7 @@ function App() {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}&units=metric`);
     const data = await response.json();
     console.log(data);
-    setWeatherData(data.cod)
+    setWeatherData(data)
     console.log("fetch weather data")
   }
 
@@ -31,9 +30,10 @@ function App() {
         setLongitude(e.latlng.lng);
         setLatitude(e.latlng.lat);
         // setPosition(e.latlng)
-        // console.log(position)
+        console.log(e.latlng.lng)
+        console.log(e.latlng.lat)
         console.log(`longitude: `, longitude);
-        console.log(latitude);
+        console.log(`latitude: `,latitude);
         setWeather(true);
         getWeather()
       },
@@ -69,7 +69,7 @@ function App() {
             <Popup>
               <p>Longitude: {longitude}</p>
               <p>Latitude: {latitude}</p>
-              <p>weather data: {weatherData}</p>
+              <p>weather data: {weatherData?.main.temp}</p>
               <p>Longitude: {longitude}</p>
               <p>Latitude: {latitude}</p>
               <p>weather data: {weatherData}</p>
