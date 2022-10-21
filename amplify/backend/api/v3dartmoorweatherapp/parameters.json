@@ -1,5 +1,0 @@
-{
-  "AppSyncApiName": "v3dartmoorweatherapp",
-  "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
-}
