@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-v3dartmoorweatherapp-dev-152916-authRole",
+      "UnauthRoleArn": "arn:aws:iam::911926927732:role/amplify-v3dartmoorweatherapp-dev-152916-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::911926927732:role/amplify-v3dartmoorweatherapp-dev-152916-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-v3dartmoorweatherapp-dev-152916-deployment",
+      "UnauthRoleName": "amplify-v3dartmoorweatherapp-dev-152916-unauthRole",
+      "StackName": "amplify-v3dartmoorweatherapp-dev-152916",
+      "StackId": "arn:aws:cloudformation:us-east-2:911926927732:stack/amplify-v3dartmoorweatherapp-dev-152916/c4cdcf20-514c-11ed-b863-02d1eb9c5874",
+      "AmplifyAppId": "d3czyk4weyfgic"
+    },
+    "categories": {
+      "api": {
+        "v3dartmoorweatherapp": {}
+      }
+    }
+  }
+}
