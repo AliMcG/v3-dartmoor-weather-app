@@ -6,7 +6,6 @@ import {
   Marker,
 } from "react-leaflet";
 import { useState } from "react";
-// import data from "./testWeatherData"
 import "./App.css";
 
 function App() {
@@ -20,17 +19,18 @@ function App() {
   const [coordinates, setCoordinates] = useState(initialCoords);
   const [weather, setWeather] = useState(false);
   const [weatherData, setWeatherData] = useState("");
-  // setWeatherData(data);
-  // console.log(weatherData.list[0]?.main.temp);
  
   async function getWeather() {
     // Passes the co-ordinates from the onClick map event to fetch request.
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates?.lati}&lon=${coordinates?.longi}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-    );
-    const data = await response.json();
-    setWeatherData(data);
-    console.log(data);
+    if (coordinates.longi) {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates?.lati}&lon=${coordinates?.longi}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+      );
+      const data = await response.json();
+      setWeatherData(data);
+      console.log(data);
+    }
+    
   }
 
   function LocationMarker() {
@@ -44,11 +44,9 @@ function App() {
       // true/false state to control conditional render.
       setWeather(true);
       //
-      // getWeather()
+      getWeather()
     });
-    if (coordinates.longi) {
-      getWeather();
-    }
+   
 
     
   }
